@@ -1,5 +1,5 @@
-public class Conta {
-    double saldo;
+public class ContaBancaria {
+    private double saldo = 0;
     int agencia = 42, numero;
     Cliente titular;
 
@@ -16,13 +16,17 @@ public class Conta {
         return false;
     }
 
-    public boolean transfere(double valor, Conta destino) {
+    public boolean transfere(double valor, ContaBanco destino) {
         boolean podeTransferir = saca(valor);
-        if(podeTransferir) {
+        if (podeTransferir) {
             destino.deposita(valor);
             return true;
         }
         //else
         return false;
+    }
+
+    public double getSaldo() {
+        return this.saldo;
     }
 }

@@ -1,7 +1,16 @@
-public class ContaBancaria {
+public class ContaBanco {
     private double saldo = 0;
-    int agencia = 42, numero;
-    Cliente titular;
+    private int agencia = 42;
+    private int numero;
+    private DadosCliente titular;
+    private static int total;
+
+    public ContaBanco(int agencia, int numero){
+        setAgencia(agencia);
+        setNumero(numero);
+        ContaBanco.total++;
+        System.out.println("o total de contas é " + total);
+    }
 
     public void deposita(double valor) {
         this.saldo += valor;
@@ -16,7 +25,7 @@ public class ContaBancaria {
         return false;
     }
 
-    public boolean transfere(double valor, ContaBancaria destino) {
+    public boolean transfere(double valor, ContaBanco destino) {
         boolean podeTransferir = saca(valor);
         if (podeTransferir) {
             destino.deposita(valor);
@@ -28,5 +37,37 @@ public class ContaBancaria {
 
     public double getSaldo() {
         return this.saldo;
+    }
+
+    public int getNumero() {
+        return this.numero;
+    }
+
+    private void setNumero(int numero) {
+        if(agencia<=0)
+            return;
+        this.numero = numero;
+    }
+
+    public int getAgencia() {
+        return this.agencia;
+    }
+
+    private void setAgencia(int agencia) {
+        if(agencia<=0)
+            return;
+        this.agencia = agencia;
+    }
+
+    public DadosCliente getTitular() {
+        return this.titular;
+    }
+
+    public void setTitular(DadosCliente titular) {
+        this.titular = titular;
+    }
+
+    public static int getTotal(){
+        return ContaBanco.total;
     }
 }

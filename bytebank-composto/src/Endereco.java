@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class Endereco {
+public class Endereco {
+    String endereco, bairro, cidade;
 }

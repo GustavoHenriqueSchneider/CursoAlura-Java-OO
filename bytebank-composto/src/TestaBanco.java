@@ -1,24 +1,27 @@
-public class TestaMetodo2 {
+public class TestaBanco {
     public static void main(String[] args) {
-        Conta conta1 = new Conta();
+        Cliente gustavo = new Cliente();
+        gustavo.cpf = "123456";
+        gustavo.nome = "Gustavo";
+        gustavo.profissao = "programador";
 
-        conta1.saldo = 100;
-        conta1.deposita(50);
-        System.out.println(conta1.saldo);
+        ContaBancaria contaGustavo = new ContaBancaria();
+        contaGustavo.deposita(100);
+        contaGustavo.titular = gustavo;
 
-        boolean sucessoSaque = conta1.saca(15);
-        if (sucessoSaque)
-            System.out.println("Saque realizado com sucesso, saldo atual: " + conta1.saldo);
-        else
-            System.out.println("Não foi possivel sacar devido saldo abaixo do valor, saldo atual: " + conta1.saldo);
+        System.out.println(contaGustavo.titular.nome);
 
-        Conta conta2 = new Conta();
-        conta2.deposita(500);
 
-        boolean sucessoTransferencia = conta2.transfere(200, conta1);
-        if (sucessoTransferencia)
-            System.out.println("Transferencia realizada com sucesso, saldo atual: " + conta2.saldo);
-        else
-            System.out.println("Não foi possivel transferir devido saldo abaixo do valor, saldo atual: " + conta2.saldo);
+        //Testar conta sem cliente
+
+        ContaBancaria contaGustavo2 = new ContaBancaria();
+        contaGustavo2.titular = new Cliente();
+        System.out.println(contaGustavo2.titular);
+
+        contaGustavo2.titular.nome = "Gustavo2";
+        System.out.println(contaGustavo2.titular.nome);
+
+        contaGustavo2.titular.endereco.bairro = "Teste Bairro";
+        System.out.println(contaGustavo2.titular.endereco.bairro);
     }
 }

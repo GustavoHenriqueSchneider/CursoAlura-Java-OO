@@ -1,3 +1,4 @@
 public class Cliente {
-    String
+    String nome, cpf, profissao;
+    Endereco endereco = new Endereco();
 }
